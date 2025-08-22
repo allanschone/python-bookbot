@@ -11,3 +11,16 @@ def count_characters_in_text(text):
         else:
             character_count[character] += 1
     return character_count
+
+def sort_on(items):
+    return items["count"]
+
+def sorted_character_list(character_count_dictionary):
+    character_list = []
+    for character in character_count_dictionary:
+        character_dictionary = {}
+        character_dictionary["char"] = character
+        character_dictionary["count"] = character_count_dictionary[character]
+        character_list.append(character_dictionary)
+    character_list.sort(reverse=True, key=sort_on)
+    return character_list
