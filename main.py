@@ -1,8 +1,9 @@
-from stats import count_words_in_text
-from stats import count_characters_in_text
-from stats import sorted_character_list
-
-book_text_file = "books/frankenstein.txt"
+import sys
+from stats import (
+    count_words_in_text,
+    count_characters_in_text,
+    sorted_character_list
+)
 
 def get_book_text(file_path):
     with open(file_path) as f:
@@ -26,5 +27,11 @@ def main():
         if character.isalpha():
             print(f"{character}: {count}")
     print("============= END ===============")
+
+try:
+    book_text_file = sys.argv[1]
+    main()
+except IndexError:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
     
-main()
